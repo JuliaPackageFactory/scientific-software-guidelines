@@ -6,6 +6,7 @@ abstract: "Development practices for research software, distilled from 26 publis
 authors:
   - family-names: "Ohno"
     given-names: "Shuhei"
+    orcid: "https://orcid.org/0009-0001-5222-9726"
 version: "0.1.0"
 date-released: "2026-10-20"
 license: "CC-BY-4.0"
