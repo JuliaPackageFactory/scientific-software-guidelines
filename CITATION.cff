@@ -1,0 +1,18 @@
+cff-version: 1.2.0
+message: "If you use these guidelines, please cite them as below."
+type: dataset
+title: "Scientific Software Development Guidelines"
+abstract: "Development practices for research software, distilled from 26 published sources and cited clause by clause. Part I covers software development in general; Part II covers what scientific computing adds."
+authors:
+  - family-names: "Ohno"
+    given-names: "Shuhei"
+version: "0.1.0"
+date-released: "2026-10-20"
+license: "CC-BY-4.0"
+repository-code: "https://github.com/JuliaPackageFactory/scientific-software-guidelines"
+url: "https://github.com/JuliaPackageFactory/scientific-software-guidelines"
+keywords:
+  - research software
+  - scientific computing
+  - software engineering guidelines
+  - reproducibility
