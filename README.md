@@ -90,7 +90,7 @@ Many familiar rules have no support in this set of sources: numeric coverage tar
 
 ### G1.1 (MUST) Match the rigor of quality practices to the software
 Do not impose the same kinds and stringency of quality practices on all software. Choose them to fit the purpose, size, range of users, development period and the consequences of failure. Whatever level you choose, be aware that more rigorous practices exist.
-> Sources: **DLR** §Application Classes (must); §Evaluation of the achieved Application Class (must) · **RSQ** three_tier_view §"History and context; software_maintenance §"How do you maintain your · **TW** code-reuse §"Reusable Code"; code-reuse-overview · **TW17** §Introduction · **W14** §Introduction · **N7009H** §5.1.1.4 — 7 sources.
+> Sources: **DLR** §Application Classes (must); §Evaluation of the achieved Application Class (must) · **RSQ** three_tier_view §"History and context; software_maintenance §"How do you maintain your · **TW** code-reuse §"Reusable Code"; code-reuse-overview · **TW17** §Introduction · **W14** §Introduction · **N7009H** §5.1.1.4 — 6 sources.
 > Note: The way levels are divided differs between sources (DLR's four classes, RSQ's three tiers, NASA's criticality matrix, TW17's "subject of a paper"), and they are not mapped onto one another. RSQ states that there is no agreed mapping of indicators to tiers [RSQ].
 
 ### G1.2 (SHOULD) Decide and record the target category at the start, and review it periodically
@@ -182,7 +182,7 @@ Put anything that people create or edit by hand, such as source code, scripts, c
 ### G3.3 (SHOULD) Do not put secrets or data with restricted sharing in the repository
 Do not put secrets such as passwords, private keys or tokens in the repository; keep them in local private files that are excluded from tracking. Do not put legally restricted data in public repositories either. Before publishing, confirm that none of these are in the history (details in G11).
 > Sources: **MS** engineering-fundamentals-checklist §"Source Control; source-control/secrets-management intro · **W17** Inadvertent sharing · **RSQ** software_project_structure §"Use version control · **OSG** starting-a-project / Your pre-launch checklist — 4 sources.
-> Note: No source states this as a must. If your organization makes it mandatory, place it in Appendix E.
+> Note: No source states this as a must. If your organization makes it mandatory, place it in Appendix C.
 
 ### G3.4 (SHOULD) Do not version-control generated files that can be regenerated (small results may be an exception)
 As a rule, do not commit anything that can be regenerated from the code and raw data, such as compiled binaries or intermediate analysis files. However, you may commit small data or results so that collaborators can refer to them easily and compare them across versions.
@@ -255,7 +255,7 @@ Do not write your own license; use a standard OSI-approved license unmodified. A
 ### G4.5 (SHOULD) Choose a license early, in light of your goals
 Choose early, considering the kind of reuse you want, the licenses of your dependencies, the licenses common in your field, and the policies of your institution and funders. If unsure, consult someone knowledgeable.
 > Sources: **W17** 3d, §Collaboration; 3d, What not to do · **NL** best_practices, §Licensing · **OSG** legal / Which open source license is appropriate for; legal / What if I want to change the license of my · **RSQ** licensing_software §"What license should you apply to · **DLR** ERM.9, §Release Management [AC1+] (must); EAA.3, §Automation and Dependency Management [AC2+] · **TW** code-reuse-overview §"Repeatable Recommendations; licensing §"Summary"; reviewing-checklist §"Legal — 6 sources.
-> Note: Making a permissive license the first choice is the majority view (W17, NL, OSG-06), but OSG recommends GPLv3 / AGPLv3 depending on the goals [OSG], and RSQ is neutral. There is no basis for rejecting the GPL. If your organization sets a default license, place it in Appendix E.
+> Note: Making a permissive license the first choice is the majority view (W17, NL, OSG), but OSG recommends GPLv3 / AGPLv3 depending on the goals [OSG], and RSQ is neutral. There is no basis for rejecting the GPL. If your organization sets a default license, place it in Appendix C.
 
 ### G4.6 (MUST) Check and comply with the license terms of dependencies and third-party code
 Check and record the licenses of the software you depend on and of third-party code you incorporate, and confirm their compatibility with your own license. Include the required license information in distributions. Do not use others' code that has no license. In DLR, a procedure for checking compatibility each time a dependency is adopted applies to application class 2 and above.
@@ -301,7 +301,7 @@ Preserve the exact versions of the dependency software needed to reproduce impor
 > Sources: **DLR** EAA.4, §Automation and Dependency Management [AC3+] · **S13** Rule 3 · **W17** 5a, §Keeping track of changes — 3 sources.
 
 ### G4.19 (MUST) Before distributing outside your institution, check whether export control regulations apply (single source)
-Before distributing software to third parties outside your institution, check whether it contains regulated elements such as cryptography, and whether the recipients fall under the regulations. The checking procedure and point of contact are organization-specific (Appendix E).
+Before distributing software to third parties outside your institution, check whether it contains regulated elements such as cryptography, and whether the recipients fall under the regulations. The checking procedure and point of contact are organization-specific (Appendix C).
 > Sources: **DLR** ERM.10, §Release Management [AC1+] (must) — 1 sources.
 
 ## G5. Design and coding
@@ -389,7 +389,7 @@ Do not leave unused code fragments or debugging code (version control keeps old 
 ### G5.23 (MUST) If you use SemVer, declare the public API and distinguish it from internal names
 For software versioned with SemVer, declare the public API precisely and comprehensively, in the code or in the documentation. Make internal names not intended for external use distinguishable, and consider carefully before exporting generic names that could clash with existing names (both of these are (SHOULD)).
 > Sources: **SEMVER** Specification §1 [if SemVer] (must); Specification §1 · **CP** §Definition of Public API; §Changes that are not considered breaking, New exports — 2 sources.
-> Note: Only TW-97 says to keep the public API "minimal"; SemVer and CP merely require it to be declared.
+> Note: Only TW says to keep the public API "minimal"; SemVer and CP merely require it to be declared.
 
 ### G5.28 (SHOULD) Do not waste resources; choose algorithms and data structures suited to the scale
 Avoid unnecessary CPU and memory use and redundant disk writes, and choose data structures and algorithms that scale appropriately with the size of the problem.
@@ -397,7 +397,7 @@ Avoid unnecessary CPU and memory use and redundant disk writes, and choose data 
 
 ### G5.29 (SHOULD) If performance is a requirement, write dedicated performance tests
 When run time or resource usage is a requirement, design dedicated tests that measure the performance of specific code or subsystems, rather than adding timers to existing tests. Performance is nearly orthogonal to other kinds of tests; code can become ten times slower even when all other tests pass.
-> Sources: **TW** testing-unittest §"Unit Testing Tips · **MS** automated-testing/README §"The Fundamentals; automated-testing/README §"Build for Testing · **RSQ** testing_software §"What types of software tests · **DLR** EST.3, §Software Test [AC3+] — 5 sources.
+> Sources: **BSSw** §Types of Tests, Performance Tests; §Types of Tests, Performance Tests (must) · **TW** testing-unittest §"Unit Testing Tips · **MS** automated-testing/README §"The Fundamentals; automated-testing/README §"Build for Testing · **RSQ** testing_software §"What types of software tests · **DLR** EST.3, §Software Test [AC3+] — 5 sources.
 
 ## G6. Testing
 
@@ -406,12 +406,12 @@ Tests do not prove correctness; they give confidence that code works as expected
 ### G6.1 (SHOULD) Write tests for code that is used repeatedly or shared
 For code used in research, write tests that confirm it works as expected and ensure that it keeps working after later changes. Even if you cannot cover existing code all at once, start by writing some tests, and add tests to any new code you write. Do not use lack of time as a reason to skip tests. For one-off exploratory code, follow G6.3.
 > Sources: **NL** best_practices, §Testing · **TW** testing §"Summary; testing §"Motivation and Background · **MS** automated-testing/README §"Why Testing; automated-testing/README §"The Fundamentals · **OSG** best-practices / Require tests and other checks… · **W14** §Plan for Mistakes · **DLR** §Software Test (must) · **RSQ** testing_software §"What types of software tests · **JOSS** RC §Tests; SUB §Submission Process · **TW17** Rule 9 — 9 sources.
-> Note: W17 drops unit testing from its recommendations for novices because it is rarely adopted in solo exploratory work [W17]. TW17 says that for code that answers a question only once, "running it on that data" may be the only reasonable test [TW17]. The must in DLR-67 concerns deciding on a test strategy; no source makes writing tests itself a must. If your organization makes it mandatory, place it in Appendix E.
+> Note: W17 drops unit testing from its recommendations for novices because it is rarely adopted in solo exploratory work [W17]. TW17 says that for code that answers a question only once, "running it on that data" may be the only reasonable test [TW17]. The must in DLR concerns deciding on a test strategy; no source makes writing tests itself a must. If your organization makes it mandatory, place it in Appendix C.
 
 ### G6.2 (SHOULD) Provide simple examples with known inputs and outputs
 Provide a simple example or test dataset that confirms that a known correct output is obtained for a known simple input, so that anyone who installs the software can run it and confirm that the software works. No source, from beginner-oriented guides to standards, opposes this.
 > Sources: **W17** 2i, §Software; 3a, §Collaboration · **TW17** Rule 9 · **TW** testing-overview §"Overview of Testing Types", §"Types · **JOSS** RC §Functionality; RC §Tests · **N7009** 4.2.2e · **N7009H** §5.6.2.1 — 6 sources.
-> Note: The sources agree and none opposes this, but none states it as a must. If your organization makes it mandatory, place it in Appendix E.
+> Note: The sources agree and none opposes this, but none states it as a must. If your organization makes it mandatory, place it in Appendix C.
 
 ### G6.3 (SHOULD) Raise the level of testing and automation step by step according to scale and use
 Introduce unit tests, coverage measurement, CI, and build tools step by step according to the project's size, the number of collaborators, and its use by others. For a one-off analysis, you may start with the simple examples of G6.2 and a script for rerunning it.
@@ -420,7 +420,7 @@ Introduce unit tests, coverage measurement, CI, and build tools step by step acc
 ### G6.4 (SHOULD) Rerun existing tests automatically after every change
 Every time you change the code, automatically rerun the existing tests to confirm that a change in one place has not broken other parts.
 > Sources: **W14** §Plan for Mistakes · **TW** testing-acceptance-regression §"Regression testing · **N7009H** §5.5.2.2 a · **RSQ** quality §"Aspects of Research Software Quality · **DLR** EST.2, §Software Test [AC2+] · **MS** automated-testing/README §"The Fundamentals"; CI-CD — 6 sources.
-> Note: The sources agree and none opposes this, but none states it as a must. If your organization makes it mandatory, place it in Appendix E.
+> Note: The sources agree and none opposes this, but none states it as a must. If your organization makes it mandatory, place it in Appendix C.
 
 ### G6.5 (MUST) In collaborative development, include tests for behavior changes in the same change
 For a PR that adds or changes behavior, add new tests or update existing ones that verify it, and include them in the same PR. Do not settle for "tests later."
@@ -436,20 +436,20 @@ Do not throw away checks done with print statements or by eye; turn them into te
 
 ### G6.8 (SHOULD) Use an existing test framework
 Use a widely used unit-testing library suited to the language, so that preparing inputs, running tests, and reporting results are handled uniformly.
-> Sources: **W14** Practice 5b, §Plan for Mistakes · **TW** testing-guidance §"Use a Testing Framework · **RSQ** testing_software §"How do we test our code?", §"How do · **DLR** EST.2, §Software Test [AC2+] — 5 sources.
+> Sources: **W14** Practice 5b, §Plan for Mistakes · **TW** testing-guidance §"Use a Testing Framework · **RSQ** testing_software §"How do we test our code?", §"How do · **BSSw** §Granularity of Tests, Unit Tests · **DLR** EST.2, §Software Test [AC2+] — 5 sources.
 
 ### G6.9 (SHOULD) Build on unit tests and supplement them with integration and system tests
 Center your testing on fast unit tests that target individual functions and classes, and supplement them with integration tests that check interactions between components and system tests that exercise the whole system at the level of user operations. Do not rely on system-level tests alone for regression testing.
-> Sources: **DLR** EDI.3, §Design and Implementation [AC2+]; §Software Test · **TW** testing-overview §"Overview of Testing Types", §"Types; testing-unittest §"Unit Testing Tips", §"Unit Testing · **RSQ** testing_software §"What types of software tests · **MS** engineering-fundamentals-checklist §"Testing; automated-testing/README §"The Fundamentals"; CI-CD · **W14** §Plan for Mistakes · **GEP** review/reviewer/looking-for §"Tests"; review/developer — 7 sources.
+> Sources: **DLR** EDI.3, §Design and Implementation [AC2+]; §Software Test · **BSSw** §Granularity of Tests, Unit Tests (must); §Granularity of Tests, Integration Tests · **TW** testing-overview §"Overview of Testing Types", §"Types; testing-unittest §"Unit Testing Tips", §"Unit Testing · **RSQ** testing_software §"What types of software tests · **MS** engineering-fundamentals-checklist §"Testing; automated-testing/README §"The Fundamentals"; CI-CD · **W14** §Plan for Mistakes · **GEP** review/reviewer/looking-for §"Tests"; review/developer — 7 sources.
 > Note: No source specifies a ratio.
 
 ### G6.10 (SHOULD) Distinguish the "type" and the "granularity" of tests, and combine them
 Treat what each test checks (verification, acceptance/validation, no-change (characterization), performance) as an axis separate from granularity (unit, integration, system), and combine them according to purpose (for verification tests in scientific computing, see S3).
-> Sources: **RSQ** testing_software §"What types of software tests · **MS** automated-testing/README §"Map of Outcomes to Testing · **TW** testing-overview §"Overview of Testing Types", §"Types; testing-acceptance-regression §"Acceptance testing — 4 sources.
+> Sources: **BSSw** §Definitions and Categories of Tests; §Types of Tests, Verification Tests · **RSQ** testing_software §"What types of software tests · **MS** automated-testing/README §"Map of Outcomes to Testing · **TW** testing-overview §"Overview of Testing Types", §"Types; testing-acceptance-regression §"Acceptance testing — 4 sources.
 
 ### G6.11 (SHOULD) Do not judge floating-point output by bitwise equality
 In tests that compare floating-point results, do not assume exact bitwise equality; determine the tolerance and state it explicitly in the tests and the documentation (see S4 for details).
-> Sources: **TW17** Rule 10 · **CP** §Changes that are not considered breaking — 3 sources.
+> Sources: **BSSw** §Types of Tests, No-Change/Characterization Tests · **TW17** Rule 10 · **CP** §Changes that are not considered breaking — 3 sources.
 
 ### G6.12 (SHOULD) Make tests deterministic, and find and fix the cause of flaky tests
 Make tests produce the same result for the same input regardless of environment. Treat a test that fails or passes without any change as a sign of a defect, and identify and fix the cause (dependence on external services, interactions between threads, and so on). When using random numbers, make it possible to supply a seed (S6).
@@ -462,12 +462,12 @@ Do not make any test depend on the state of other tests. Where possible, replace
 
 ### G6.14 (SHOULD) Keep unit tests fast
 Keep unit tests fast to build and fast to run. For long-running checks, set a maximum timeout so that they fail early.
-> Sources: **RSQ** testing_software §"What types of software tests · **TW** testing-guidance §"Consider how long it takes your · **MS** CI-CD/continuous-integration §"End-to-End Integration — 4 sources.
+> Sources: **BSSw** §Granularity of Tests, Unit Tests (must) · **RSQ** testing_software §"What types of software tests · **TW** testing-guidance §"Consider how long it takes your · **MS** CI-CD/continuous-integration §"End-to-End Integration — 4 sources.
 > Note: No source gives a specific time limit.
 
 ### G6.15 (SHOULD) Tier how often tests run according to their run time
 Run light tests on every change, and run time-consuming tests on a schedule, such as nightly or weekly. Keep running them periodically even while development is paused, to detect breakage caused by external changes.
-> Sources: **TW** testing-guidance §"Run the tests"; testing-checklist; testing-guidance §"Consider how long it takes your · **RSQ** software_maintenance §"How do you maintain your — 3 sources.
+> Sources: **BSSw** §Discussion 2 · **TW** testing-guidance §"Run the tests"; testing-checklist; testing-guidance §"Consider how long it takes your · **RSQ** software_maintenance §"How do you maintain your — 3 sources.
 
 ### G6.16 (SHOULD) Run tests from early in development, and run them often
 Write and run tests alongside the code from the start of development, and do not leave long gaps between runs.
@@ -488,13 +488,13 @@ Focus each test on a single condition, give it a name that conveys its purpose, 
 
 ### G6.20 (SHOULD) Measure coverage to find gaps (do not make numeric targets an obligation)
 Measure coverage and use it as a clue for finding important parts that are untested. Do not aim solely for 100%, and keep in mind that high coverage does not guarantee correctness.
-> Sources: **RSQ** testing_software §"What types of software tests; quality_dimensions intro · **TW** testing-guidance §"Aim to have a good code coverage · **MS** CI-CD/continuous-integration §"Code Coverage Checks; engineering-fundamentals-checklist §"Testing · **DLR** EST.8, §Software Test [AC2+] · **N7009H** §5.5.2.2 a — 5 sources.
+> Sources: **RSQ** testing_software §"What types of software tests; quality_dimensions intro · **TW** testing-guidance §"Aim to have a good code coverage · **MS** CI-CD/continuous-integration §"Code Coverage Checks; engineering-fundamentals-checklist §"Testing · **DLR** EST.8, §Software Test [AC2+] · **N7009H** §5.5.2.2 a · **BSSw** §Test Analysis Tools, Code Coverage; §Discussion 4 — 5 sources.
 > Note: There is no consensus on numeric targets. The MS checklist gives ">90% if possible," and the MS CI page only gives the example that "many tools fail the build below 80%"; the other sources give no figures. W17 does not recommend even measuring coverage for novices [W17].
 
 ### G6.21 (SHOULD) Manage test code, test data, and run conditions in the repository
 Keep test code under version control as part of the codebase, and ideally keep the required data, procedures, and environment parameters in the repository as well. For data that is too large, store a reference to it. Make test data realistic, reflecting the messiness of real data.
 > Sources: **RSQ** testing_software §"Why is it important to test our · **DLR** EST.10, §Software Test [AC1+] · **MS** CI-CD/continuous-integration §"Test Automation Data · **N7009** 4.2.2e · **N7009H** §5.5.2.3 [M&S 16]; §5.5.3.1 [M&S 18] · **TW** testing-guidance §"Test Realistic Cases; testing §"Motivation and Background", §"The advantages · **W17** 2i, §Software — 7 sources.
-> Note: The sources agree and none opposes this, but none states it as a must. If your organization makes it mandatory, place it in Appendix E.
+> Note: The sources agree and none opposes this, but none states it as a must. If your organization makes it mandatory, place it in Appendix C.
 
 ### G6.22 (SHOULD) Make it possible to run all tests with a single command, and make the results easy to understand
 Make it possible to run all tests with a single command, and document how to run them and what resources they require. Make the output understandable to non-specialists.
@@ -506,7 +506,7 @@ Test basic functionality in an environment close to the operational one, and alw
 
 ### G6.24 (SHOULD) Before refactoring, prepare tests that pin down the current behavior
 When refactoring code that has no tests, first prepare tests that check its current behavior, and confirm that the behavior is unchanged before and after the refactoring.
-> Sources: **RSQ** software_maintenance §"How do you track and manage · **GEP** review/developer/small-cls §"Keep related test code in; review/reviewer/looking-for §"Tests"; review/developer · **DLR** EDI.5, §Design and Implementation [AC2+] — 4 sources.
+> Sources: **RSQ** software_maintenance §"How do you track and manage · **GEP** review/developer/small-cls §"Keep related test code in; review/reviewer/looking-for §"Tests"; review/developer · **DLR** EDI.5, §Design and Implementation [AC2+] · **BSSw** §Types of Tests, No-Change/Characterization Tests — 4 sources.
 
 ### G6.26 (SHOULD) Use manual testing as a supplement, and document the procedure
 You may check manually anything that requires human judgment, such as GUIs, visual output, and usability. In that case, document the procedure and the expected results, and turn the parts that can be repeated into automated tests.
@@ -535,7 +535,7 @@ On every push or PR to a shared repository, automatically run the build and the 
 ### G7.4 (SHOULD) In collaborative development with CI, make passing CI a condition for merging
 Set protection rules or merge conditions on the main branch so that changes that fail the build, the tests, or static checks cannot be merged.
 > Sources: **CP** §Reviewing, Approving, and Merging PRs; §Guidance on automatically enforcing guidelines · **MS** CI-CD/continuous-integration §"Branch Policy; engineering-fundamentals-checklist §"CI/CD", §"Code · **OSG** best-practices / Require tests and other checks… · **TW** reviewing-checklist §"For the coder — 4 sources.
-> Note: The sources agree and none opposes this, but none states it as a must. If your organization makes it mandatory, place it in Appendix E.
+> Note: The sources agree and none opposes this, but none states it as a must. If your organization makes it mandatory, place it in Appendix C.
 
 ### G7.5 (SHOULD) Run the build and tests locally before submitting changes
 Before committing or opening a PR, run the build, tests, and linters locally, and confirm that all tests, old and new, pass.
@@ -776,7 +776,7 @@ Use welcoming and inclusive language in documentation and interactions, and writ
 ### G11.1 (SHOULD) Keep secrets out of version control
 Do not commit credentials such as passwords, private keys and API keys to the repository. Keep secrets in local private files and exclude them from tracking with .gitignore. MS regards exclusion with .gitignore as the best way to prevent leaks.
 > Sources: **MS** engineering-fundamentals-checklist §"Source Control; source-control/secrets-management intro · **RSQ** software_project_structure §"Use version control · **W17** Inadvertent sharing · **OSG** starting-a-project / Your pre-launch checklist — 4 sources.
-> Note: The sources themselves state this as should or leave the strength unspecified. No source describes what to do after a leak (revocation, reissue, removal from history). The sources agree and none disagrees, but none says must. An organization that wants to make this mandatory should place it in Appendix E.
+> Note: The sources themselves state this as should or leave the strength unspecified. No source describes what to do after a leak (revocation, reissue, removal from history). The sources agree and none disagrees, but none says must. An organization that wants to make this mandatory should place it in Appendix C.
 
 ### G11.5 (SHOULD) Keep other sensitive data out of public repositories as well
 Do not track data files that contain sensitive information in a public version control system. Treat data as "as open as possible, as closed as necessary."
@@ -785,7 +785,7 @@ Do not track data files that contain sensitive information in a public version c
 ### G11.6 (SHOULD) Apply least privilege to access rights and privileges
 Grant access to repositories and cloud environments only to the people who need it, when they need it, and periodically review who has access. Except in very special circumstances, do not require root or other privileges to install or use the software you build. TW17 gives as reasons that a bug then behaves much like malicious software, and that such requirements hinder trial use on clusters.
 > Sources: **MS** engineering-fundamentals-checklist §"Security"; CI-CD · **RSQ** using_version_control §"How do you implement version · **TW17** Rule 7 — 3 sources.
-> Note: One source (OSG-71) recommends that at least two people hold administrator rights on a public project, so avoiding dependence on a single person must be balanced against least privilege. For the permissions of AI agents, see G12.6.
+> Note: One source (OSG) recommends that at least two people hold administrator rights on a public project, so avoiding dependence on a single person must be balanced against least privilege. For the permissions of AI agents, see G12.
 
 ### G11.7 (SHOULD) Check for security flaws in code review
 During review, check for security flaws. As items to check, the sources list unchecked errors returned by libraries, unvalidated input, improperly encoded output, and the handling of invalid parameters. If any part, such as security or privacy, is outside what you are qualified to judge, add a qualified reviewer.
@@ -794,7 +794,7 @@ During review, check for security flaws. As items to check, the sources list unc
 ### G11.10 (SHOULD) Keep dependencies small and track their versions and updates
 Treat dependencies also as liabilities that can bring in changes, deprecations and security problems. Keep a small, well-understood dependency tree and choose well-maintained projects. Record the exact versions of dependencies and make updates deliberate and auditable.
 > Sources: **RSQ** software_maintenance §"How do you maintain your · **MS** security/README §"OWASP Cheat Sheets", §"Recommended · **W17** 2d, §Software · **TW17** Rule 5 — 3 sources.
-> Note: No source states, at should or stronger, that dependencies should be scanned regularly for known vulnerabilities (MS-118 gives this only as an example). W17 and TW17 also recommend choosing well-maintained libraries, but not for security reasons.
+> Note: No source states, at should or stronger, that dependencies should be scanned regularly for known vulnerabilities (MS gives this only as an example). W17 and TW17 also recommend choosing well-maintained libraries, but not for security reasons.
 
 ### G11.11 (MUST) Check export control regulations before distributing outside the organization (single source)
 Before distributing software to third parties outside the organization, confirm that it complies with export control regulations (for example, cryptography, sanctions lists, countries that require a license). This applies only when distributing software of DLR application class 1 or higher outside the organization.
@@ -818,7 +818,7 @@ This applies only to submission to and review for JOSS. Observe the following.
 - As a reviewer, use AI only for non-substantive tasks such as grammar checking, disclose that use, and leave evaluative judgments such as acceptance, novelty and correctness to humans.
 
 > Sources: **JOSS** RC §Software paper content, AI usage disclosure [JOSS] (must); SUB §AI Usage Policy, Author use [JOSS] (must) — 1 sources.
-> Note: In the original, including the disclosure section is must, while stating non-use and describing how AI was used and how the output was verified are should. Incomplete or inaccurate disclosure may be treated as an ethics violation (JOSS-50). Sources other than JOSS require neither disclosure of AI use in papers nor human review of all AI-assisted output, and outside JOSS the latter remains (SHOULD).
+> Note: In the original, including the disclosure section is must, while stating non-use and describing how AI was used and how the output was verified are should. Incomplete or inaccurate disclosure may be treated as an ethics violation (JOSS). Sources other than JOSS require neither disclosure of AI use in papers nor human review of all AI-assisted output, and outside JOSS the latter remains (SHOULD).
 
 ## G13. People and operations
 
@@ -893,13 +893,13 @@ Maintain a guide to using the model or analysis software that includes the follo
 - All inputs with their permissible ranges, accuracy, and the treatment of uncertainty
 - Examples of expected results (including examples of good and poor agreement with referent data)
 > Sources: **N7009** 4.2.1.9 [M&S 47] [NASA scope] (must); 4.2.1.5 [M&S 12] [NASA scope] (must) · **N7009H** §5.4.1 h; App. C.2–C.3 [Rec. 4.2.2e] — 2 sources.
-> Note: The evidence comes only from a single NASA lineage, and the must in N7009 applies only to models that support critical decisions. The table of contents for the guide (N7009H-143) is a suggestion, and its details are optional.
+> Note: The evidence comes only from a single NASA lineage, and the must in N7009 applies only to models that support critical decisions. The table of contents for the guide (N7009H) is a suggestion, and its details are optional.
 
 ## S3. Verification and validation
 
 ### S3.1 (SHOULD) Distinguish verification from validation (single source)
 Distinguish verification (confirming that the implementation behaves according to the specification or mathematical model and meets its accuracy targets) from validation (confirming, by comparison with referent data, how well the model or computation represents reality for the intended use). Record and report separately which of the two was done. Satisfying verification in the software engineering sense does not establish agreement with reality.
-> Sources: **N7009** §3.2 Validation; §3.2 Verification · **N7009H** §4.7 · **RSQ** testing_software §"What is code testing? — 1 sources.
+> Sources: **N7009** §3.2 Validation; §3.2 Verification · **N7009H** §4.7 · **BSSw** §Types of Tests, Verification Tests; §Types of Tests, Acceptance Tests · **RSQ** testing_software §"What is code testing? — 1 sources.
 > Note: The scope of the terms differs slightly among the sources. RSQ calls "the output is correct" validation, which is broader than NASA's usage, while BSSw restricts validation to that based on UQ and experimental data. The only basis for this as a recommendation is the NASA standard N7009, and its must applies only to models that support critical decisions.
 
 ### S3.2 (MUST) Check the correctness of results separately from passing tests or reproducibility
@@ -909,8 +909,8 @@ Check the correctness of scientific computing results separately from whether th
 
 ### S3.3 (MUST) Verify the correctness of regression-test reference outputs before relying on them
 Regression tests that only compare against past outputs show only that "nothing has changed." If you use their reference outputs as grounds for the correctness of results, verify the correctness of those reference outputs separately and independently. When regenerating the reference, also verify the new reference outputs before adopting them.
-> Sources: **TW** testing-acceptance-regression §"Limitations of — 2 sources.
-> Note: Regression tests are useful in themselves, and BSSw considers unit-level characterization tests sufficient to drive refactoring [BSSw-17].
+> Sources: **BSSw** §Types of Tests, No-Change/Characterization Tests (must); §Types of Tests, No-Change/Characterization Tests · **TW** testing-acceptance-regression §"Limitations of — 2 sources.
+> Note: Regression tests are useful in themselves, and BSSw considers unit-level characterization tests sufficient to drive refactoring [BSSw].
 
 ### S3.4 (SHOULD) Preserve verification and validation test cases and referent data, and use them for regression testing
 Keep the plans, procedures, test cases (input-output pairs for confirming correct execution) and referent data used in verification and validation under configuration management. Rerun them as regression tests whenever the code is changed thereafter. Choose test cases that cover the range of the defined limits of applicability.
@@ -924,7 +924,7 @@ Treat the libraries and third-party tools you use as subjects of evaluation too,
 
 ### S3.6 (SHOULD) Write verification tests so that pass or fail follows from mathematical properties or the specification
 Write tests that check whether the implementation correctly implements the intended algorithm so that, based on the algorithm's mathematical properties or a clear specification, the requirement is evident from the test's specification and pass/fail criteria alone (for example, the conjugate gradient method fully solves a linear system with N distinct eigenvalues in exactly N iterations). For code verification, perform inspection, code tracing, unit testing, and comparison of the implementation with the conceptual and mathematical models.
-> Sources: **N7009H** §5.5.2.2 a; §5.5.2.3 · **N7009** App. E.3.3 — 2 sources.
+> Sources: **BSSw** §Types of Tests, Verification Tests · **N7009H** §5.5.2.2 a; §5.5.2.3 · **N7009** App. E.3.3 — 2 sources.
 > Note: No source specifically names which properties or techniques to use, such as conservation laws, order of convergence or manufactured solutions. The only example in the sources is a single iteration-count property.
 
 ### S3.7 (SHOULD) Detect impossible values and conditions that invalidate results, and write negative tests
@@ -956,12 +956,12 @@ Decide and agree on the acceptance criteria and allowable uncertainty for judgin
 
 ### S4.1 (SHOULD) Assume that floating-point results can change at the bit level
 Floating-point results can change at the bit level with changes in the order of operations (including refactoring), compiler and optimization settings, the use of extended precision or fused multiply-add (FMA), math libraries, and the configuration of the OS, hardware and computing infrastructure. Design tests and comparisons of results on this assumption. A case has been reported in which an equality comparison in the same program gave a different result depending only on whether optimization was enabled.
-> Sources: **GB91** §"Languages and Compilers" > "Ambiguity; §"Differences Among IEEE 754 Implementations · **TW17** Rule 10 · **CP** §Changes that are not considered breaking · **TW** overview-barriers §"Big data and complex computational · **N7009** App. E.3.3 — 3 sources.
+> Sources: **GB91** §"Languages and Compilers" > "Ambiguity; §"Differences Among IEEE 754 Implementations · **BSSw** §Types of Tests, No-Change/Characterization Tests · **TW17** Rule 10 · **CP** §Changes that are not considered breaking · **TW** overview-barriers §"Big data and complex computational · **N7009** App. E.3.3 — 3 sources.
 > Note: The main text of GB91 (Goldberg) states that if intermediate results differ between IEEE-conforming machines, it is a software bug [GB91]. An addendum by Sun in the same source corrects this, stating that IEEE 754 does not guarantee identical results across implementations.
 
 ### S4.2 (SHOULD) Do not make test pass/fail depend on specific floating-point bit patterns
 For tests that compare results across code changes or versions, judge pass or fail by approximate accuracy, numerical stability or statistical properties rather than by specific bit patterns. Do not rely on binary-match tests of floating-point output, especially at the integration and system levels, because they fail merely when the order of operations changes and thus hinder refactoring.
-> Sources: **CP** §Changes that are not considered breaking · **TW17** Rule 10 — 3 sources.
+> Sources: **CP** §Changes that are not considered breaking · **BSSw** §Types of Tests, No-Change/Characterization Tests · **TW17** Rule 10 — 3 sources.
 > Note: As a goal for reruns of the same version in the same environment, bit-for-bit agreement is supported (S7.9). One source also points out that the difference between exact and approximate reproduction is large and that it is hard to draw conclusions from approximate agreement [S13].
 
 ### S4.3 (SHOULD) When comparing within a tolerance, decide the value, record it, and state it in the documentation and tests
@@ -1010,7 +1010,7 @@ Define physical constants exactly once so that the whole program uses the same v
 ### S6.1 (SHOULD) Record the seed in analyses that use random numbers
 In analyses that involve random numbers, record the random seed used so that the results can be reproduced exactly by supplying the same seed. If the program chooses the seed internally (for example, from the time), write the seed to the output so that it can be reused later. Even when the seed cannot be recorded, at a minimum record which analysis steps involve random numbers.
 > Sources: **S13** Rule 6; Rule 6 (minimum) · **TW17** Rule 10 · **TW** overview-barriers §"Big data and complex computational — 2 sources.
-> Note: In parallel computing it is difficult to obtain identical results from run to run even with a fixed seed, and some software (for example, TensorFlow) cannot fix random numbers without sacrificing parallelism [TW]. No source shows how to partition random number streams in parallel computing. The sources agree and none disagrees, but none says must. An organization that wants to make this mandatory should place it in Appendix E.
+> Note: In parallel computing it is difficult to obtain identical results from run to run even with a fixed seed, and some software (for example, TensorFlow) cannot fix random numbers without sacrificing parallelism [TW]. No source shows how to partition random number streams in parallel computing. The sources agree and none disagrees, but none says must. An organization that wants to make this mandatory should place it in Appendix C.
 
 ### S6.2 (SHOULD) Allow the seed to be supplied as an input parameter (single source)
 In programs that use random numbers, allow users to optionally supply the random seed as an input parameter (such as a command-line argument), so that the program can be made to run deterministically when needed.
@@ -1040,7 +1040,7 @@ At startup, have the program write all parameters and software versions to stand
 ### S7.4 (SHOULD) Modify data with programs, and record unavoidable manual steps
 Perform data modification, format conversion, and processing with scripts or programs that can be rerun, and avoid hand-editing data files or copying and pasting between documents. Where manual steps are unavoidable, record at minimum which files were changed or moved and for what purpose, and which menus or ranges were selected.
 > Sources: **S13** Rule 2; Rule 2 (minimum) · **W17** 1e, §Data management · **W14** Practice 2a, §Let the Computer Do the Work; Practice 2b, §Let the Computer Do the Work · **TW** code-reuse-overview §"Repeatable Recommendations — 4 sources.
-> Note: The sources agree and none dissent, but none states this as a must. If an organization makes it mandatory, place it in Appendix E.
+> Note: The sources agree and none dissent, but none states this as a must. If an organization makes it mandatory, place it in Appendix C.
 
 ### S7.5 (SHOULD) Make the entire analysis rerunnable with a single command
 Describe the entire analysis, from raw data to figures, tables, and manuscript, in executable form (e.g., a shell script, a Makefile, a workflow management system) so that it can be regenerated with a single command. For small projects, a single driver script that runs everything is sufficient.
@@ -1068,7 +1068,7 @@ Aim for a given released version, run with the same parameters, the same data, a
 ### S7.10 (SHOULD) Decide the level of reproducibility (at minimum yourself; third parties for results used in papers)
 At minimum, make sure you yourself can reproduce your results. For results used in papers, grant applications, diagnoses, and the like, aim for a level at which others can rerun the entire analysis, from the data to the libraries.
 > Sources: **S13** §Introduction; Rule 1 (minimum) · **TW17** Rule 10 · **TW** renv §"Science (must); overview-definitions §"Definitions", §"Table of — 3 sources.
-> Note: Research that uses sensitive data can be made reproducible without publishing everything [TW]. Reproduction by third parties does not necessarily presuppose publication. The statement that reproducibility by yourself is the minimum [S13] is a should; the must in TW-83 concerns publishing and distributing the entire analysis to make it reproducible.
+> Note: Research that uses sensitive data can be made reproducible without publishing everything [TW]. Reproduction by third parties does not necessarily presuppose publication. The statement that reproducibility by yourself is the minimum [S13] is a should; the must in TW concerns publishing and distributing the entire analysis to make it reproducible.
 
 ### S7.11 (MUST) Save intermediate results and the data underlying figures
 At minimum, save the intermediate files generated while running the analysis, unless they are prohibitively large. For each figure, save the underlying data (including values after plotting-time processing such as binning) and the code that created the figure so that they can be retrieved; at minimum, record which data the figure is based on and how it can be reconstructed. Save all intermediate results explicitly as files, in standardized formats where possible (SHOULD).
@@ -1077,7 +1077,7 @@ At minimum, save the intermediate files generated while running the analysis, un
 ### S7.12 (SHOULD) Link statements in the text to the results that support them
 For statements in papers and notes (interpretations, claims, conclusions), include at minimum enough detail (such as the file paths of detailed results) to trace them back to the underlying results in the future. Link them systematically from the time of writing (SHOULD).
 > Sources: **S13** Rule 9; Rule 9 (minimum) · **N7009** 4.3.9b — 2 sources.
-> Note: The sources agree and none dissent, but none states this as a must. If an organization makes it mandatory, place it in Appendix E.
+> Note: The sources agree and none dissent, but none states this as a must. If an organization makes it mandatory, place it in Appendix C.
 
 ### S7.13 (SHOULD) Record the rationale for the setup, and link result versions to the scenarios that produced them
 For simulation and analysis setups, record the data and auxiliary software used to prepare the inputs, the rationale and assumptions of the setup, the calibration and its domain, and key settings (time step, number of iterations, convergence tolerance, stopping criteria, etc.). Track each version of the run results together with the scenario (inputs and settings) that produced it, and place them under configuration management.
@@ -1098,7 +1098,7 @@ Publish the input data, scripts, versions, parameters, and intermediate results 
 ### S8.1 (SHOULD) Keep raw data as obtained, and do not modify it
 Store raw data in the form obtained from the instrument or survey, and do not overwrite it with cleaned versions. Treat raw data as the single canonical version, and prevent accidental changes or hand edits, for example by making it read-only.
 > Sources: **W17** 1a, §Data management; What not to put under version control · **RSQ** software_project_structure §"Directory structure · **TW** compendia §"Separating Methods, Data, Output · **W14** Practice 4a; Practice 4a, §Don't Repeat Yourself (or Others) (must) — 4 sources.
-> Note: The must in W14-25 concerns giving each element of data a single authoritative representation (DRY); no source states not modifying raw data itself as a must.
+> Note: The must in W14 concerns giving each element of data a single authoritative representation (DRY); no source states not modifying raw data itself as a must.
 
 ### S8.2 (SHOULD) Keep raw data, intermediate data, and results in separate locations
 Divide data into raw, cleaned, intermediate, and processed, and keep them in separate subdirectories (e.g., `data/raw`, `data/processed`, `results`). Distinguish read-only material, material created by people (code, documents), and material generated by the project (figures, output).
@@ -1108,7 +1108,7 @@ Divide data into raw, cleaned, intermediate, and processed, and keep them in sep
 ### S8.3 (SHOULD) Back up data to multiple locations
 Back up raw data and material created by people (scripts, documents, packages depended on) to multiple locations as soon as they are created. If you use external disks, store them in a location separate from the original. Keep the project in a folder that is mirrored off the working machine (as a guide, W17 suggests syncing at least daily).
 > Sources: **W17** 1b, §Data management; 5a, §Keeping track of changes · **TW** rdm §"Summary", §"Motivation and Background; vcs-git-in-research §"Potential · **RSQ** using_version_control §"How do you implement version — 3 sources.
-> Note: No source specifies the number of copies or the type of media. The sources agree and none dissent, but none states this as a must. If an organization makes it mandatory, place it in Appendix E.
+> Note: No source specifies the number of copies or the type of media. The sources agree and none dissent, but none states this as a must. If an organization makes it mandatory, place it in Appendix C.
 
 ### S8.4 (SHOULD) Record the origin and provenance of data
 Give raw data a unique identifier and version number, and record its origin (e.g., in a README in the data folder). For data not stored locally, record the retrieval procedure, the official version number, and the download date. Make clear the quality and origin of input data (measured, estimated, assumed, or derived from another model) (SHOULD).
@@ -1135,7 +1135,7 @@ Deposit published data and code in a trusted repository that issues persistent i
 ### S8.9 (SHOULD) Do not put sensitive data in public repositories
 Handle data "as open as possible, as closed as necessary." Do not put data whose sharing is legally prohibited, or data containing sensitive information, in public version control systems or public repositories.
 > Sources: **TW** rdm-fair §"Theory; overview-definitions §"Reproducible But Not Open · **W17** Inadvertent sharing · **RSQ** software_project_structure §"Use version control — 3 sources.
-> Note: The sources agree and none dissent, but none states this as a must. If an organization makes it mandatory, place it in Appendix E.
+> Note: The sources agree and none dissent, but none states this as a must. If an organization makes it mandatory, place it in Appendix C.
 
 ## S9. Analysis code, libraries and notebooks
 
@@ -1161,7 +1161,7 @@ When reporting results, include a quantitative estimate of uncertainty, a qualit
 ### S10.2 (SHOULD) Identify, classify, and record sources of uncertainty
 Identify the sources of uncertainty (inputs and parameters, model construction, run settings, numerical error, output analysis), and record them qualitatively or quantitatively for the inputs, the results, and quantities derived from the results. Classify each source as aleatory or epistemic, and do not casually classify a source as aleatory (irreducible). Also record important physical processes, effects, and scenarios that were not considered.
 > Sources: **N7009** §3.2 Aleatory / Epistemic Uncertainty, 13; §3.2 Uncertainty Characterization · **N7009H** §4.5; §5.2.1.3.3 — 2 sources.
-> Note: The evidence comes from a single NASA lineage only, and the N7009 must applies only to models that support critical decisions. Tracking uncertainty in a ledger (N7009H-152) is an example and is optional.
+> Note: The evidence comes from a single NASA lineage only, and the N7009 must applies only to models that support critical decisions. Tracking uncertainty in a ledger (N7009H) is an example and is optional.
 
 ### S10.3 (SHOULD) Record the scope and results of sensitivity analysis
 Use sensitivity analysis to identify the main drivers of the results, and record the ranges of the inputs varied and the results. Keep the ranges of variation within the permissible uses. Where possible, compare whether the model's sensitivities are consistent with those of the real system, and document the comparison.
@@ -1235,7 +1235,7 @@ Refer to the FAIR4RS principles as aspirational goals when publishing and preser
 ### S11.12 (SHOULD) Distinguish FAIR from open, and handle access-restricted material within the FAIR framework
 FAIR is not synonymous with open. Handle software and data that require access restrictions within the FAIR framework as well, through retrieval procedures with authentication and authorization and through publication of their metadata, following the principle "as open as possible, as closed as necessary."
 > Sources: **F4RS** FAIR4RS Principles, A1.2 · **TW** rdm-fair §"Theory; overview-barriers §"Support additional users — 2 sources.
-> Note: TW-80 concerns data; no source explicitly states "as closed as necessary" for software.
+> Note: TW concerns data; no source explicitly states "as closed as necessary" for software.
 
 ### S11.13 (SHOULD) Before publishing, use a checklist to confirm that everything needed is in place
 When publishing software, check the following items with a checklist.
@@ -1250,7 +1250,7 @@ When publishing software, check the following items with a checklist.
 ### S11.14 (SHOULD) For software you plan to publish, consider developing it in the open from an early stage
 For software you plan to publish, rather than publishing it all at once after completion, consider moving to development in a public repository once you are comfortable with others seeing it. If you plan to submit to JOSS, move to open development early: JOSS requires more than six months of public development history before submission and does not count software developed privately and recently made public as having that history.
 > Sources: **OSG** starting-a-project / Launching your own open source · **RSQ** life_cycle §"Release & Deployment · **JOSS** RC §Open development; SUB §Scope and significance [JOSS] (must) — 3 sources.
-> Note: OSG-51 says that going public is fine at the idea stage, partway through the work, or after years of being closed, and leaves the timing to the author's judgment.
+> Note: OSG says that going public is fine at the idea stage, partway through the work, or after years of being closed, and leaves the timing to the author's judgment.
 
 ### S11.15 (SHOULD) Designate who is responsible for maintenance, and do not let maintenance depend on one person
 For each piece of software that is published or shared, designate a person (or organization) who understands the overall technical picture and is responsible for quality and maintenance, and before publishing, also decide who will maintain it and respond to issues and PRs after publication. Even as the sole maintainer, document important decisions, the architecture, and operational knowledge in the repository, and where possible share ownership with a second person who can respond in your absence. For public projects, OSG lists having at least two people with administrator rights as a pre-launch check item.
@@ -1282,12 +1282,12 @@ If you publish a paper about the software itself, have the following in place so
 - Automated tests, or documented verification procedures
 - Contributing guide and a point of contact for support
 > Sources: **TW17** §Introduction · **JOSS** RC §Good practices; RC §Documentation, Installation instructions — 2 sources.
-> Note: TW17-01 cautions that not all scientific software needs to be robust.
+> Note: TW17 cautions that not all scientific software needs to be robust.
 
 ### S11.21 (SHOULD) Disclose the use of generative AI, and verify AI-drafted material before publishing
 When submitting a software paper, disclose the use of generative AI in code, documentation, and paper writing (tools, models, and versions; where it was used; the extent of assistance; and a statement that people reviewed and verified all output), and if none was used, say so. For JOSS submissions this disclosure is required (MUST), and incomplete or inaccurate disclosure may be treated as an ethics violation. Before publishing a README or other material drafted with AI assistance, verify that its commands, requirements, and citation metadata are correct.
 > Sources: **JOSS** RC §Software paper content, AI usage disclosure [JOSS] (must); SUB §AI Usage Policy, Author use [JOSS] (must) · **RSQ** creating_good_readme §"What sections should you — 2 sources.
-> Note: JOSS is the only source that requires disclosure of generative AI use; RSQ-54 addresses only verification. General rules on AI use are covered in G12.
+> Note: JOSS is the only source that requires disclosure of generative AI use; RSQ addresses only verification. General rules on AI use are covered in G12.
 
 ---
 
